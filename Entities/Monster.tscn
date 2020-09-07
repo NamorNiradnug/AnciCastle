@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Entities/Monster.gd" type="Script" id=1]
+[ext_resource path="res://Textures/knight.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Sword.tscn" type="PackedScene" id=3]
+
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12.2985, 15.3086 )
+
+[node name="Monster" type="KinematicBody2D" groups=[
+"Monsters",
+]]
+position = Vector2( 42.7226, 53.4801 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Ainmation" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.94857, 1.04923 )
+shape = SubResource( 2 )
+
+[node name="Sword" parent="." instance=ExtResource( 3 )]
+position = Vector2( -1.0265, 0.127159 )
+

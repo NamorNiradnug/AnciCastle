@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Textures/bullet.png" type="Texture" id=2]
+[ext_resource path="res://Textures/bullet_particles.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.0
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 5.41
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="Bullet" type="Area2D"]
+z_index = 4096
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+lifetime = 0.05
+randomness = 0.5
+local_coords = false
+process_material = SubResource( 2 )
+texture = ExtResource( 3 )
+
